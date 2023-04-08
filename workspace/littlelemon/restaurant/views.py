@@ -5,7 +5,6 @@ from .serializers import MenuSerializer, BookingSerializer, UserSerializer
 from .models import menu, booking
 from django.contrib.auth.models import User
 
-
 from rest_framework.permissions import IsAuthenticated
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -26,6 +25,8 @@ class SingleMenuItemView(viewsets.ModelViewSet):
     serializer_class = MenuSerializer
 
 class BookingViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
     queryset = booking.objects.all()
     serializer_class = BookingSerializer
+
 
